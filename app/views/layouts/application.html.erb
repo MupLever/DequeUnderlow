@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Dequeunderlow</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <header class="p-3 bg-dark text-white">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
+        </a>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <li><%= link_to t('layouts.home'), root_path, class: "nav-link px-2 text-white"%> </li>
+          <li><%= link_to t('layouts.questions'), questions_path, class: "nav-link px-2 text-white" %> </li>
+          <li><%= link_to t('layouts.create_new'), new_question_path, class: "nav-link px-2 text-white" %> </li>
+        </ul>
+        <div class="text-end">
+          <% I18n.available_locales.each do |locale| %>
+            <% if I18n.locale == locale %>
+              <%= tag.span t(locale), class: 'btn btn-outline-primary me-2' %>
+            <% else %>
+              <%= link_to t(locale), root_path(locale: locale), class: 'btn btn-outline-primary me-2' %>
+            <% end %>
+          <% end %>
+          <% if signed_in? %>
+            <a class="btn btn-dark text-warning me-2" href="/"><%= current_user.name %></a>
+            <%= link_to t('layouts.log_out'), session_path, class: "btn btn-outline-danger me-2",data: {method: :delete, confirm: 'Are you sure you want to log out?'} %>
+          <% else %>
+              <%= link_to t('layouts.log_in'), new_session_path, class: "btn btn-outline-light me-2" %>
+              <%= link_to t('layouts.sign_up'), new_user_path, class: "btn btn-warning" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  <main class="container mt-3">
+  <% flash.each do |k,v| %>
+    <%= tag.div v, class: "alert alert-#{k}", role: "alert" %>
+  <% end %>
+    <%= yield %>
+    </main>
+
+  </body>
+</html>

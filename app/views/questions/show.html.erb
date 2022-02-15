@@ -1,0 +1,60 @@
+<h1><%= t("questions.show.question") %></h1>
+<article class="card">
+  <div class="card-header bg-dark text-warning">
+    <h3><%= t("questions.show.author") %>:&nbsp;&nbsp;<%= @question.user.name %></h3>
+    <hr/>
+  </div>
+  <div class="card-body bg-dark text-white">
+    <h2><%= @question.title %></h2>
+    <hr/>
+    <pre><%= @question.body %></pre>
+    <hr/>
+    <div class="my-3">
+    <time datetime="<%= @question.created_at.strftime('%Y-%m-%d %H:%M:%S')%>">
+      <%=t("questions.show.date") %>&nbsp;&nbsp;<%= @question.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
+    </time>
+    </div>
+    <% if signed_in? && current_user == @question.user%>
+      <%= link_to t("questions.show.edit"), edit_question_path(@question), class: 'btn btn-success' %>
+      <%= link_to t("questions.show.delete"), question_path(@question), data: {method: :delete, confirm: 'Are you sure you want to delete this page?'}, class: "btn btn-danger" %>
+    <% end %>
+    <div class="my-3">
+      <%= form_with model: [@question, @answer], remote: true do |form| %>
+          <div class="mb-3 row"> 
+            <%= form.label t("questions.show.write"), class: "col-sm-2 col-form-label" %><br/>
+            <div class="col-sm-10">
+              <%= form.text_area :body, required: true, minlegth: 4, placeholder: "What are you doing?", class: "form-control" %>
+            </div>
+          </div>
+        <%= form.submit t("questions.show.submit"), class: "btn btn-success" %>
+      <% end %>
+    </div>
+  </div>
+</article>
+<h2 class="my-3"><%=t("questions.show.answer_of_users") %></h2>
+<%= paginate @answers %>
+  <% @answers.each do |answer| %>
+  <hr/>
+  <article class="card bg-dark text-warning" id="answer-<%= answer.id %>">
+    <div class="card-header">
+      <h4><%= t("questions.show.author") %>:&nbsp;&nbsp;<%= answer.user.name %><h4/>
+      <hr/>
+    </div>
+    <div class="card-body bg-dark text-white">
+      <h3><%=t("questions.show.answer_of_user") %></h3>
+      <pre><%= answer.body %></pre>
+      <hr/>
+      <time datetime="<%= answer.created_at.strftime('%Y-%m-%d %H:%M:%S')%>">
+      <%=t("questions.show.date") %>&nbsp;&nbsp;<%= answer.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
+      </time><br/>
+      <% if signed_in? && current_user == answer.user %>
+      <div class="my-3">
+        <%= link_to t("questions.show.edit"), edit_question_answer_path(@question, answer), class: 'btn btn-success' %>
+        <%= link_to t("questions.show.delete"), question_answer_path(@question, answer), remote: true, data: {method: :delete, confirm: 'Are you sure you want to delete this page?'}, class: "btn btn-danger" %>
+      </div>
+      <% end %>
+    </div>
+  </article>
+<% end %>
+<hr/>
+<%= paginate @answers %>

@@ -1,0 +1,70 @@
+
+en:
+  layouts:
+    home: "Home"
+    questions: "Questions"
+    create_new: "Create new question"
+    log_in: "Log in"
+    log_out: "Log out"
+    sign_up: "Sign up"
+  pages:
+    index:
+      questions: "Our Questions"
+      date: "Date of creation:"
+      edit: "Edit"
+      delete: "Delete"
+      open: "Open"
+      author: "Author"
+      authorization: "Log in to see your questions."
+  answers:
+    edit: 
+      edit_answer: "Edit answer"
+      edit_your_answer: "Edit your answer"
+      save: "Save"
+  questions:
+    edit:
+      edit_question: "Edit question"
+      edit_save: "Save"
+      edit_title: "Title"
+      edit_text: "Text"
+    new:
+      new_question: "New Question"
+      create: "Create"
+      new_title: "Title"
+      new_text: "Text"
+    show:
+      question: "Question"
+      date: "Date of creation:"
+      answer_of_user: "Answer from User"
+      answer_of_users: "Answers for this question"
+      edit: "Edit"
+      delete: "Delete"
+      submit: "Submit"
+      write: "Write your answer"
+      author: "Author"
+    index:
+      questions: "Questions"
+      edit: "Edit"
+      delete: "Delete"
+      open: "Open"
+      author: "Author"
+  sessions:
+    new:
+      auth: "Authorization"
+      log_in: "Log in"
+      email: "E-Mail"
+      password: "Password"
+  users:
+    new:
+      register: "Registration form"
+      register: "Register"
+      email: "E-Mail"
+      password: "Password"
+      name: "Name"
+      confirm_password: "Password confirmation"
+  kaminari:
+   pagination:
+    first: 'First'
+    last: 'Last'
+    next: 'Next'
+    prev: 'Prev'

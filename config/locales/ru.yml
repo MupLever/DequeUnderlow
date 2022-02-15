@@ -1,0 +1,69 @@
+ru:
+  layouts:
+    home: "Главная"
+    questions: "Вопросы"
+    create_new: "Задать свой вопрос"
+    log_in: "Авторизация"
+    log_out: "Выйти"
+    sign_up: "Регистрация"
+  pages:
+    index:
+      questions: "Ваши Вопросы"
+      date: "Дата создания:"
+      edit: "Редактировать"
+      delete: "Удалить"
+      open: "Открыть в новом окне"
+      author: "Автор"
+      authorization: "Авторизуйтесь, чтобы увидеть ваши вопросы."
+  answers:
+    edit: 
+      edit_answer: "Редактирование ответа"
+      edit_your_answer: "Редактируйте"
+      save: "Сохранить"
+  questions:
+    edit:
+      edit_question: "Редактировать вопрос"
+      edit_save: "Сохранить"
+      edit_title: "Название"
+      edit_text: "Текст"
+    new:
+      new_question: "Задать новый вопрос"
+      create: "Задать"
+      new_title: "Название"
+      new_text: "Текст"
+    show:
+      question: "Вопрос"
+      date: "Дата создания:"
+      answer_of_user: "Ответ от пользователя"
+      answer_of_users: "Овтеты на вопрос"
+      edit: "Редактировать"
+      delete: "Удалить"
+      submit: "Отправить"
+      write: "Написать свой ответ"
+      author: "Автор"
+    index:
+      questions: "Вопросы"
+      edit: "Редактировать"
+      delete: "Удалить"
+      open: "Открыть в новом окне"
+      author: "Автор"
+  sessions:
+    new:
+      auth: "Авторизация"
+      log_in: "Войти"
+      email: "E-Mail"
+      password: "Пароль"
+  users:
+    new:
+      register: "Форма регистрации"
+      register: "Зарегистрироваться"
+      email: "E-Mail"
+      password: "Пароль"
+      name: "Ваше Имя"
+      confirm_password: "Подтверждение пароля"
+  kaminari:
+   pagination:
+    first: 'В начало'
+    last: 'В конец'
+    next: 'Далее'
+    prev: 'Назад'

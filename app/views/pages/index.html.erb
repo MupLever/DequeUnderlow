@@ -1,0 +1,36 @@
+
+<h1><%= t("pages.index.questions") %></h1>
+<% if signed_in? %>
+    <%= paginate @questions %>
+    <% @questions.each do |question| %>
+    <hr/>
+    <article class="card">
+        <div class="card-header bg-dark text-warning">
+        <h3><%= t("pages.index.author") %>:&nbsp;&nbsp;<%= question.user.name %></h3>
+        <hr/>
+        </div>
+    
+        <div class="card-body bg-dark text-white">
+        <h2><%= question.title %></h2>
+        <hr/>
+        <pre><%= question.body %></pre>
+        <hr/>
+    
+        <div class="my-3">
+            <time datetime="<%= question.created_at.strftime('%Y-%m-%d %H:%M:%S')%>">
+            <%=t("pages.index.date") %>&nbsp;&nbsp;<%= question.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
+            </time>
+        </div>
+        <%= link_to t("pages.index.open"), question_path(question), class: "btn btn-primary" %>
+        <% if signed_in? && current_user == question.user %>
+            <%= link_to t("pages.index.edit"), edit_question_path(question), class: "btn btn-success" %>
+            <%= link_to t("pages.index.delete"), question_path(question), remote: true, data: {method: :delete, confirm: 'Are you sure you want to delete this page?'}, class: "btn btn-danger" %>
+        <% end %>
+        </div>
+      </article>
+    <% end %>
+    <hr/>
+    <%= paginate @questions %>
+    <% else %>
+    <p><a href='http://localhost:3000/session/new' onmouseup="PaintHref(event, '#ffc107', '#0d6efd')" onmousedown="PaintHref(event, '#ffc107', '#0d6efd')"><%= t("pages.index.authorization") %></a></p>
+<% end %>
